@@ -214,9 +214,15 @@ void Grammar::print(ostream& output) const {
     // Print the start symbol and the rule header.
     output << "\nStart = " << startVariable << "\nRules:\n";
 
-    // Iterate through all productions and print each one.
+    // Print the start rule first; keep map order for the remaining rules.
+    vector<string> displayOrder;
+    if (rule.count(startVariable)) displayOrder.push_back(startVariable);
+    for (const auto& entry : rule)
+        if (entry.first != startVariable) displayOrder.push_back(entry.first);
+
     bool any = false;
-    for (const auto& [left, alternatives] : rule) {
+    for (const auto& left : displayOrder) {
+        const auto& alternatives = rule.at(left);
         if (alternatives.empty()) continue;
         any = true;
 

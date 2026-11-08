@@ -249,7 +249,7 @@ Grammar replaceTerminals(const Grammar& grammar) {
                     if (!grammar.sigma.count(symbol)) continue;
 
                     if (!proxy.count(symbol)) {
-                        const auto name = freshVariable(result, symbol == "#" ? "T_hash" : "T_" + symbol);
+                        const auto name = freshVariable(result, symbol == "#" ? "Thash" : "T" + symbol);
                         proxy[symbol] = name;
                         result.rule[name].insert(RHS{symbol});
                     }

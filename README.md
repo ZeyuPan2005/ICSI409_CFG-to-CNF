@@ -63,7 +63,9 @@ Every report contains these numbered sections:
 7. Binarization
 8. Final CNF Validation
 
-Each section prints V, Sigma, Start, and Rules. Rules use two-space indentation, one space between RHS tokens, and eps for an empty RHS. The final section prints the final grammar and either CNF Validation: PASS or CNF Validation: FAIL with a reason.
+Each section prints V, Sigma, Start, and Rules. The start variable's rules appear first; other left-hand sides and alternatives use deterministic sorted order. Therefore, the Original Grammar section preserves the grammar but not necessarily the input order. Rules use two-space indentation, one space between RHS tokens, and eps for an empty RHS. The final section prints the final grammar and either CNF Validation: PASS or CNF Validation: FAIL with a reason.
+
+The converter names terminal helpers by the terminal they represent: Ta -> a, Tb -> b, T0 -> 0, or Thash -> #. The same terminal shares one helper variable within a conversion. Long productions use X1, X2, ... for binary decomposition; identical suffixes in different productions may receive separate X variables. Generated names avoid collisions with existing variables by adding a numeric suffix when needed (for example, Ta_1).
 
 ## Test Cases
 
