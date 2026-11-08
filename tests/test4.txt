@@ -1,0 +1,2 @@
+S -> a S b | b Y | Y a
+Y -> b Y | a Y | eps

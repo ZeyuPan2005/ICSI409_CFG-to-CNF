@@ -1,0 +1,82 @@
+1. Original Grammar
+
+V = {S}
+Sigma = {a, b}
+Start = S
+Rules:
+  S -> eps | S S | a S b
+
+2. New Start Variable
+
+V = {S, S0}
+Sigma = {a, b}
+Start = S0
+Rules:
+  S -> eps | S S | a S b
+  S0 -> S
+
+3. Remove Epsilon Productions
+
+V = {S, S0}
+Sigma = {a, b}
+Start = S0
+Rules:
+  S -> S | S S | a S b | a b
+  S0 -> eps | S
+
+4. Remove Unit Productions
+
+V = {S, S0}
+Sigma = {a, b}
+Start = S0
+Rules:
+  S -> S S | a S b | a b
+  S0 -> eps | S S | a S b | a b
+
+5. Remove Useless Variables
+
+V = {S, S0}
+Sigma = {a, b}
+Start = S0
+Rules:
+  S -> S S | a S b | a b
+  S0 -> eps | S S | a S b | a b
+
+6. Replace Terminals
+
+V = {S, S0, T_a, T_b}
+Sigma = {a, b}
+Start = S0
+Rules:
+  S -> S S | T_a S T_b | T_a T_b
+  S0 -> eps | S S | T_a S T_b | T_a T_b
+  T_a -> a
+  T_b -> b
+
+7. Binarization
+
+V = {S, S0, T_a, T_b, X1, X2}
+Sigma = {a, b}
+Start = S0
+Rules:
+  S -> S S | T_a T_b | T_a X1
+  S0 -> eps | S S | T_a T_b | T_a X2
+  T_a -> a
+  T_b -> b
+  X1 -> S T_b
+  X2 -> S T_b
+
+8. Final CNF Validation
+
+V = {S, S0, T_a, T_b, X1, X2}
+Sigma = {a, b}
+Start = S0
+Rules:
+  S -> S S | T_a T_b | T_a X1
+  S0 -> eps | S S | T_a T_b | T_a X2
+  T_a -> a
+  T_b -> b
+  X1 -> S T_b
+  X2 -> S T_b
+
+CNF Validation: PASS
