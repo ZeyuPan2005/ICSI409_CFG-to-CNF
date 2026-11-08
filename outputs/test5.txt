@@ -50,43 +50,43 @@ Rules:
 
 6. Replace Terminals
 
-V = {S, T, T_0, U}
+V = {S, T, T0, U}
 Sigma = {#, 0}
 Start = S
 Rules:
-  S -> # | T T | T_0 U T_0 T_0
-  T -> # | T T_0 | T_0 T
-  T_0 -> 0
-  U -> # | T_0 U T_0 T_0
+  S -> # | T T | T0 U T0 T0
+  T -> # | T T0 | T0 T
+  T0 -> 0
+  U -> # | T0 U T0 T0
 
 7. Binarization
 
-V = {S, T, T_0, U, X1, X2, X3, X4}
+V = {S, T, T0, U, X1, X2, X3, X4}
 Sigma = {#, 0}
 Start = S
 Rules:
-  S -> # | T T | T_0 X1
-  T -> # | T T_0 | T_0 T
-  T_0 -> 0
-  U -> # | T_0 X3
+  S -> # | T T | T0 X1
+  T -> # | T T0 | T0 T
+  T0 -> 0
+  U -> # | T0 X3
   X1 -> U X2
-  X2 -> T_0 T_0
+  X2 -> T0 T0
   X3 -> U X4
-  X4 -> T_0 T_0
+  X4 -> T0 T0
 
 8. Final CNF Validation
 
-V = {S, T, T_0, U, X1, X2, X3, X4}
+V = {S, T, T0, U, X1, X2, X3, X4}
 Sigma = {#, 0}
 Start = S
 Rules:
-  S -> # | T T | T_0 X1
-  T -> # | T T_0 | T_0 T
-  T_0 -> 0
-  U -> # | T_0 X3
+  S -> # | T T | T0 X1
+  T -> # | T T0 | T0 T
+  T0 -> 0
+  U -> # | T0 X3
   X1 -> U X2
-  X2 -> T_0 T_0
+  X2 -> T0 T0
   X3 -> U X4
-  X4 -> T_0 T_0
+  X4 -> T0 T0
 
 CNF Validation: PASS

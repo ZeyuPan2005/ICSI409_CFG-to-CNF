@@ -12,8 +12,8 @@ V = {S, S0}
 Sigma = {a, b}
 Start = S0
 Rules:
-  S -> eps | a S b
   S0 -> S
+  S -> eps | a S b
 
 3. Remove Epsilon Productions
 
@@ -21,8 +21,8 @@ V = {S, S0}
 Sigma = {a, b}
 Start = S0
 Rules:
-  S -> a S b | a b
   S0 -> eps | S
+  S -> a S b | a b
 
 4. Remove Unit Productions
 
@@ -30,8 +30,8 @@ V = {S, S0}
 Sigma = {a, b}
 Start = S0
 Rules:
-  S -> a S b | a b
   S0 -> eps | a S b | a b
+  S -> a S b | a b
 
 5. Remove Useless Variables
 
@@ -39,44 +39,44 @@ V = {S, S0}
 Sigma = {a, b}
 Start = S0
 Rules:
-  S -> a S b | a b
   S0 -> eps | a S b | a b
+  S -> a S b | a b
 
 6. Replace Terminals
 
-V = {S, S0, T_a, T_b}
+V = {S, S0, Ta, Tb}
 Sigma = {a, b}
 Start = S0
 Rules:
-  S -> T_a S T_b | T_a T_b
-  S0 -> eps | T_a S T_b | T_a T_b
-  T_a -> a
-  T_b -> b
+  S0 -> eps | Ta S Tb | Ta Tb
+  S -> Ta S Tb | Ta Tb
+  Ta -> a
+  Tb -> b
 
 7. Binarization
 
-V = {S, S0, T_a, T_b, X1, X2}
+V = {S, S0, Ta, Tb, X1, X2}
 Sigma = {a, b}
 Start = S0
 Rules:
-  S -> T_a T_b | T_a X1
-  S0 -> eps | T_a T_b | T_a X2
-  T_a -> a
-  T_b -> b
-  X1 -> S T_b
-  X2 -> S T_b
+  S0 -> eps | Ta Tb | Ta X2
+  S -> Ta Tb | Ta X1
+  Ta -> a
+  Tb -> b
+  X1 -> S Tb
+  X2 -> S Tb
 
 8. Final CNF Validation
 
-V = {S, S0, T_a, T_b, X1, X2}
+V = {S, S0, Ta, Tb, X1, X2}
 Sigma = {a, b}
 Start = S0
 Rules:
-  S -> T_a T_b | T_a X1
-  S0 -> eps | T_a T_b | T_a X2
-  T_a -> a
-  T_b -> b
-  X1 -> S T_b
-  X2 -> S T_b
+  S0 -> eps | Ta Tb | Ta X2
+  S -> Ta Tb | Ta X1
+  Ta -> a
+  Tb -> b
+  X1 -> S Tb
+  X2 -> S Tb
 
 CNF Validation: PASS
