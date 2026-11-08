@@ -15,9 +15,8 @@ bool isUpper(char c) {
     return c >= 'A' && c <= 'Z';
 }
 
-// A valid variable suffix or terminal character must be either a lowercase letter or a digit.
-// This is used when checking the remainder of a variable name and when validating single-character
-// terminals.
+// Check for a lowercase letter or digit.
+// Uppercase letters and underscores in variable names are handled by isVariable().
 bool isLowerOrDigit(char c) {
     return (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9');
 }
@@ -193,8 +192,8 @@ string Grammar::validationError() const {
     return {};
 }
 
-// Print the grammar.
-// This is mainly used for debugging or for showing the parsed grammar in a readable way.
+// Print the grammar for intermediate and final stage reports.
+// The start rule appears first, followed by sorted rules and alternatives.
 // The format is:
 //   V = {...}
 //   Sigma = {...}
